@@ -12,9 +12,9 @@ jobs:
       #   run: Test-Path TestEvents.json | Should -Be $true
       - name: Run Tosca Tests on VM
         shell: pwsh
-        env: # Set the secret as an input
-          client_id: ${{ secrets.TOSCAVM_CLIENTID }}
-          client_secret: ${{ secrets.TOSCAVM_CLIENTSECRET }}
+        # env: # Set the secret as an input
+        #   client_id: ${{ secrets.TOSCAVM_CLIENTID }}
+        #   client_secret: ${{ secrets.TOSCAVM_CLIENTSECRET }}
         run: |  
           ToscaExecutionClient/Windows/tosca_execution_client.ps1 -toscaServerUrl "https://azprdqetosvm01.vm.az.etn.com" -projectName "Eaton" -events '["TestEe"]' -clientId "NfQEXSjrz0mOK6a1O4oF1A" -clientSecret "Pdkovo--X0G27MedMAtMVgUTwo2Z4oqUy0yS4sf0nVzw"
       - name: Process JUnit Results
