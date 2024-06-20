@@ -16,7 +16,7 @@ jobs:
         #   client_id: ${{ secrets.TOSCAVM_CLIENTID }}
         #   client_secret: ${{ secrets.TOSCAVM_CLIENTSECRET }}
         run: |  
-          ToscaExecutionClient/Windows/tosca_execution_client.ps1 -toscaServerUrl "https://azprdqetosvm01.vm.az.etn.com" -projectName "Eaton" -events '["TestEe"]' -clientId "NfQEXSjrz0mOK6a1O4oF1A" -clientSecret "Pdkovo--X0G27MedMAtMVgUTwo2Z4oqUy0yS4sf0nVzw"
+          ToscaExecutionClient/Windows/tosca_execution_client.ps1 -toscaServerUrl "http://azprdqetosvm01.vm.az.etn.com" -projectName "Eaton" -events '["TestEe"]' -clientId "NfQEXSjrz0mOK6a1O4oF1A" -clientSecret "Pdkovo--X0G27MedMAtMVgUTwo2Z4oqUy0yS4sf0nVzw"
       - name: Process JUnit Results
         uses: mikepenz/action-junit-report@v3
         if: always()
