@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is Running Tosca Tests via the AOS API 🚀
 on: [push]
 jobs:
   Execute-Tosca-Tests:
-    runs-on: SF-345
+    runs-on: self-hosted
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
