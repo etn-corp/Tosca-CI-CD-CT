@@ -5,29 +5,19 @@ jobs:
   Execute-Tosca-Tests:
     runs-on: self-hosted
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-      # - name: Check if the TestEvents.json file exists in the repo
-      #   shell: pwsh
-      #   run: Test-Path TestEvents.json | Should -Be $true
-      - name: Run Tosca Tests on VM ex policy
-        shell: pwsh
-        # env: # Set the secret as an input
-        #   client_id: ${{ secrets.TOSCAVM_CLIENTID }}
-        #   client_secret: ${{ secrets.TOSCAVM_CLIENTSECRET }}
-        run: |  
-          powershell -ExecutionPolicy Bypass
+        - name: Checkout branch
+          uses: actions/checkout@v3
+        - name: Execute PowerShell Script
+          run: |  
+            powershell -ExecutionPolicy Bypass
           
-      - name: Run Tosca Tests on VM
-        shell: pwsh
-        # env: # Set the secret as an input
-        #   client_id: ${{ secrets.TOSCAVM_CLIENTID }}
-        #   client_secret: ${{ secrets.TOSCAVM_CLIENTSECRET }}
-        run: |  
-          ToscaExecutionClient/Windows/tosca_execution_client.ps1 -toscaServerUrl "https://azprdqetosvm01.vm.az.etn.com" -projectName "Eaton" -events '["TestEe1"]' -clientId "NfQEXSjrz0mOK6a1O4oF1A" -clientSecret "Pdkovo--X0G27MedMAtMVgUTwo2Z4oqUy0yS4sf0nVzw"
-      - name: Process JUnit Results
-        uses: mikepenz/action-junit-report@v3
-        if: always()
-        with:
-          report_paths: '**/results/*results.xml'
-          require_tests: true
+        - name: Execute PowerShell Script
+          run: |
+            ToscaExecutionClient/Windows/tosca_execution_client.ps1 -toscaServerUrl "https://azprdqetosvm01.vm.az.etn.com" -projectName "Eaton" -events '["TestEe1"]' -clientId "NfQEXSjrz0mOK6a1O4oF1A" -clientSecret "Pdkovo--X0G27MedMAtMVgUTwo2Z4oqUy0yS4sf0nVzw"
+        
+        - name: Process JUnit Results
+          uses: mikepenz/action-junit-report@v3
+          if: always()
+          with:
+            report_paths: '**/results/*results.xml'
+            require_tests: true
