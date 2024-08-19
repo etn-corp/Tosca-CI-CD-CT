@@ -7,9 +7,9 @@ jobs:
     steps:
         - name: Checkout branch
           uses: actions/checkout@v3
-        - name: Execute PowerShell Script1
-          run: |  
-            powershell -ExecutionPolicy Bypass
+        # - name: Execute PowerShell Script1
+        #   run: |  
+        #     powershell -ExecutionPolicy Bypass
           
         - name: Execute PowerShell Script
           run: |
