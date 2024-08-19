@@ -7,13 +7,13 @@ jobs:
     steps:
         - name: Checkout branch
           uses: actions/checkout@v3
-        # - name: Execute PowerShell Script1
-        #   run: |  
-        #     powershell -ExecutionPolicy Bypass
+        - name: Execute PowerShell Script1
+          run: |  
+            powershell -ExecutionPolicy Bypass
           
-        - name: Execute PowerShell Script
-          run: |
-            ToscaExecutionClient/Windows/tosca_execution_client.ps1 -toscaServerUrl "https://azprdqetosvm01.vm.az.etn.com" -projectName "Eaton" -events '["TestEe1"]' -clientId "NfQEXSjrz0mOK6a1O4oF1A" -clientSecret "Pdkovo--X0G27MedMAtMVgUTwo2Z4oqUy0yS4sf0nVzw"
+        # - name: Execute PowerShell Script
+        #   run: |
+        #     ToscaExecutionClient/Windows/tosca_execution_client.ps1 -toscaServerUrl "https://azprdqetosvm01.vm.az.etn.com" -projectName "Eaton" -events '["TestEe1"]' -clientId "NfQEXSjrz0mOK6a1O4oF1A" -clientSecret "Pdkovo--X0G27MedMAtMVgUTwo2Z4oqUy0yS4sf0nVzw"
         
         - name: Process JUnit Results
           uses: mikepenz/action-junit-report@v3
